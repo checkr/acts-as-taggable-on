@@ -1,7 +1,6 @@
 require 'active_record'
 require 'active_record/version'
 require 'active_support/core_ext/module'
-require 'action_view'
 
 require_relative 'acts_as_taggable_on/engine'  if defined?(Rails)
 
@@ -16,7 +15,6 @@ module ActsAsTaggableOn
   autoload :Taggable
   autoload :Tagger
   autoload :Tagging
-  autoload :TagsHelper
   autoload :VERSION
 
   autoload_under 'taggable' do
@@ -75,7 +73,4 @@ ActiveSupport.on_load(:active_record) do
   extend ActsAsTaggableOn::Compatibility
   extend ActsAsTaggableOn::Taggable
   include ActsAsTaggableOn::Tagger
-end
-ActiveSupport.on_load(:action_view) do
-  include ActsAsTaggableOn::TagsHelper
 end

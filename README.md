@@ -283,16 +283,6 @@ User.find(:first).posts.tag_counts_on(:tags)
 
 A helper is included to assist with generating tag clouds.
 
-Here is an example that generates a tag cloud.
-
-Helper:
-
-```ruby
-module PostsHelper
-  include ActsAsTaggableOn::TagsHelper
-end
-```
-
 Controller:
 
 ```ruby
@@ -301,23 +291,6 @@ class PostController < ApplicationController
     @tags = Post.tag_counts_on(:tags)
   end
 end
-```
-
-View:
-
-```erb
-<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-<% end %>
-```
-
-CSS:
-
-```css
-.css1 { font-size: 1.0em; }
-.css2 { font-size: 1.2em; }
-.css3 { font-size: 1.4em; }
-.css4 { font-size: 1.6em; }
 ```
 
 ## Configuration
